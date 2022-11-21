@@ -43,7 +43,7 @@ public:
     using size_type = typename container::size_type;
 
     // Additional type (as exposed in the complementary section of part 4)
-    using difference_type = container::difference_type;
+    using difference_type = typename container::difference_type;
 
 private:
     container& m_container;

@@ -1,6 +1,7 @@
 # IN204 : Examen à mi-parcours
 
-Nous nous intéressons dans le cadre de ce sujet à la définition d'une classe **view** qui permet d'accèder à un sous-ensemble des éléments contenus dans un containeur, ce containeur doit supporté un accès par indexation.
+Nous nous intéressons dans le cadre de ce sujet à la définition d'une classe **view** qui permet d'accèder à un sous-ensemble des éléments contenus dans un containeur, ce containeur doit supporter un accès par indexation.
+
 D'une certaine manière, l'idée est d'offrir en C++ une fonctionalité équivalente à celle de a[1:4] qui retourne la séquence d'éléments débutants avec l'élément se situant en poisition 1 et se terminant avec l'élément se situant en position 4, et ce de manière générique pour un containeur supportant un accès par index.
 
 ## Partie n°1: Définition d'une classe **view** pour un vecteur d'entier
@@ -54,7 +55,7 @@ Est-il possible d'accéder aux champs `m_container`, `m_first_index` et `m_last_
 
 ### Question 2.2
 
-Proposer un moyen pour pouvoir accéder en lecture aux données stockés dans ces champs mais surtout pas en écriture.
+Proposer un moyen pour pouvoir accéder en lecture aux données stockées dans ces champs mais surtout pas en écriture.
 
 **Conseils** : Penser aux méthodes d'accés.
 
@@ -94,7 +95,7 @@ Nous souhaitons que la classe `std::vector<int>` soit un containeur. Nous rappel
 | Expression | Type de retour | Description |
 |------------|----------------|-------------|
 | `c.begin()` | `(const_)iterator` | Itérateur référençant le premier élément stocké dans le containeur |
-| `c.end()` | `(const_)iterator` | Itérateur référençant l'élément dénotant que la fin de la séquence |
+| `c.end()` | `(const_)iterator` | Itérateur référençant l'élément dénotant la fin de la séquence |
 | `c.empty()` | `bool` | Aucun élément dans le containeur |
 | `c.size()` | `size_type` | Nombre d'éléments dans le containeur. |
 
@@ -227,10 +228,10 @@ concept addable = requires(T a, T b)
 
 ## 6. Exceptions
 
-Le constructuer de la classe `view`:
+Le constructeur de la classe `view`:
 
 ```cpp
-    view(container& container, int first_index, int second_index) ```
+    view(container& container, int first_index, int second_index);
 ```
 
 ne génère aucune erreur si jamais `first_index` est inférieur à zéro ou plus grand que l'indice du dernier élément dans le containeur. L'erreur se produira quand l'on essayera d'accéder aux itérateurs. Il en va de même pour `last_index` qui peut accepter une valeur inférieure à zéro, plus grande que l'indice du dernier élément dans le containeur ou plus petite que le premier indice `first_index`. Nous souhaitons détecter ces cas d'erreur et générer une exception `std::out_of_range` pour signaler l'erreur d'initialisation de la classe.
