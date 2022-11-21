@@ -18,7 +18,7 @@ public:
 };
 ```
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -51,4 +51,4 @@ Pour les versions antérieures à C++20, il est nécessaire de définir l'opéra
 
 A partir de C++20, si l'opérateur `operator ==` est redéfini, alors le compilateur génère automatiquement l'opérateur `operator !=` en faisant la négation de l'opérateur `operator ==`.
 
-</div>
+___

@@ -29,7 +29,7 @@ Expliquer à quoi correspondent les déclarations suivantes :
     view(std::vector<int>& vector, int first_index, int last_index);
 ```
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -45,7 +45,7 @@ Ce constructeur crée une vue qui fait référence au vecteur `vector` et qui re
 
 Ce constructeur crée une vue qui fait référence au vecteur `vector` et qui ne permet d'accéder qu'aux éléments situés entre l'indice `first_index`et l'indice `last_index`. Il s'agit d'un constructeur spécialisé qui permet de créer une vue limitée à une sous-séquence du vecteur `vector`.
 
-</div>
+___
 
 ### Question 1.2
 
@@ -53,7 +53,7 @@ Pour chacun des constructeurs précédents, compléter le code des constructeurs
 
 **Remarque** : Le code est minimaliste, on ne demande pas de vérifier si les paramètres `first_index` et `last_index` désignent des index valides vecteur.
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -75,6 +75,7 @@ Le second constructeur est encore plus simple, le champ `m_container` fait réf�
 
 ***Remarque :***
 Nous pouvons constater que le constructeur 
+
 ```cpp
     explicit view(std::vector<int>& vector): 
         m_container(vector), m_first_index(0), m_last_index(vector.size() - 1)
@@ -98,7 +99,7 @@ Dans ce cas, il est possible de définir le premier constructeur en faisant un a
         {}
 ```
 
-</div>
+___
 
 ### Question 1.3
 
@@ -106,7 +107,7 @@ Y-aurait-il besoin de compléter la liste des constructeurs. Expliquer pourquoi 
 
 Si vous ajoutez un ou plusieurs constructeurs, écrivez le constructeur et son code.
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -139,4 +140,4 @@ class non_copiable_object:
     non_copiable_object(const non_copiable_object&) = delete;
 ```
 
-</div>
+___

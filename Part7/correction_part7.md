@@ -17,8 +17,7 @@ Il existe deux versions de l'opérateur, l'une définie comme opération constan
 
 Proposer un opérateur `operator []` pour la classe `view`.
 
-
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -47,4 +46,4 @@ class view
 
 Le code proposé dans le répertoire associé utilise la fonction `std::format` pour donner des messages plus informatifs.
 
-</div>
+___

@@ -30,7 +30,7 @@ public:
 };
 ```
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -45,7 +45,7 @@ public:
 };
 ```
 
-</div>
+___
 
 ### Question 5.2
 
@@ -62,7 +62,9 @@ Dites parmi les définitions suivantes :
 `view<int>`||
 `view<int*>`||
 
-<div style="background-color:#cdd">
+___
+
+**Correction**:
 
 * `view<std::vector<int>>`: compile parce que `std::vector<int>` est bien un containeur qui supporte un accès indexé.
 * `view<std::array<int>>`: compile parce que `std::array<int>` est bien un containeur qui supporte un accès indexé.
@@ -70,7 +72,7 @@ Dites parmi les définitions suivantes :
 * `view<int>`: ne compile pas parce que `int` n'est pas un containeur.
 * `view<int*>`: ne compile pas parce que `int*` n'est pas un containeur.
 
-</div>
+___
 
 ### Question 5.3
 
@@ -104,7 +106,7 @@ concept addable = requires(T a, T b)
 };
 ```
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -152,6 +154,7 @@ concept view_container = requires
 ```
 
 Enfin, il faut s'assurer que les méthodes `begin` et `end` sont bien définis et retourne bien un `iterator`. Pour ce faire, nous supposons que `c` désigne une référence sur un containeur ayant comme type `T`, ce qui s'écrit par :
+
 ```cpp
 template<typename T>
 concept view_container = requires(T& c) 
@@ -239,3 +242,5 @@ concept view_container = requires(T& c, const T& cc)
     { cc.size() } -> std::convertible_to<typename T::size_type>;
 };
 ```
+
+___

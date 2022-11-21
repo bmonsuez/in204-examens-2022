@@ -5,7 +5,7 @@
 
 Est-il possible d'accéder aux champs `m_container`, `m_first_index` et `m_last_index`. Expliquer pourquoi ?
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -24,7 +24,7 @@ private:
 
 De ce fait, seules les méthodes de la classe `view` peuvent accéder à ces champs. 
 
-</div>
+___
 
 ### Question 2.2
 
@@ -32,7 +32,7 @@ Proposer un moyen pour pouvoir accéder en lecture aux données stockés dans ce
 
 **Conseils** : Penser aux méthodes d'accés.
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -103,4 +103,4 @@ public:
 };
 ```
 
-</div>
+___

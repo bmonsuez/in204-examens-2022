@@ -14,8 +14,7 @@ Modifier le constructeur pour qu'il vérifie la validité des indices `first_ind
 
 ***Conseil***: la méthode `size` d'un containeur retourne le nombre d'éléments dans le containeur.
 
-<div style="background-color:#cdd">
-
+___
 **Correction**:
 
 En fait, `first_index` et `last_index` doivent être compris entre $0$ et le nombre d'éléments dans le containeur, soit `m_container.size() - 1`.
@@ -61,4 +60,4 @@ Dans le code proposé en correction, il est proposé d'utilisé la fonction `std
     }
 ```
 
-</div>
+___
