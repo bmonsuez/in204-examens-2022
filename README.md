@@ -2,7 +2,7 @@
 
 Ce répertoire contient le sujet de l'examen ainsi que les éléments de correction pour chacune des parties du sujet d'examen.
 
-Chaque sous-répertoire contient une correction détaillée ainsi que le code correspondant à cette sous-partie ainsi qu'un exemple d'utilisation de ce code.
+Chaque sous-répertoire contient une correction détaillée, le code correspondant à cette sous-partie ainsi qu'un exemple d'utilisation de ce code.
 
 ## Structure des documents
 
