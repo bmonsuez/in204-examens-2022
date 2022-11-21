@@ -1,8 +1,8 @@
 # IN204 : Examen à mi-parcours
 
-Nous nous intéressons dans le cadre de ce sujet à la définition d'une classe **view** qui permet d'accèder à un sous-ensemble des éléments contenus dans un containeur, ce containeur doit supporter un accès par indexation.
+Nous nous intéressons dans le cadre de ce sujet à la définition d'une classe **view** qui permet d'accéder à un sous-ensemble des éléments contenus dans un containeur, ce containeur doit supporter un accès par indexation.
 
-D'une certaine manière, l'idée est d'offrir en C++ une fonctionalité équivalente à celle de a[1:4] qui retourne la séquence d'éléments débutants avec l'élément se situant en poisition 1 et se terminant avec l'élément se situant en position 4, et ce de manière générique pour un containeur supportant un accès par index.
+D'une certaine manière, l'idée est d'offrir en C++ une fonctionalité équivalente à celle de a[1:4] en Python qui retourne la séquence d'éléments débutants avec l'élément se situant en position 1 et se terminant avec l'élément se situant en position 4 et ce de manière générique pour un containeur supportant un accès par index.
 
 ## Partie n°1: Définition d'une classe **view** pour un vecteur d'entier
 
@@ -39,11 +39,11 @@ Expliquer à quoi correspondent les déclarations suivantes :
 
 Pour chacun des constructeurs précédents, compléter le code des constructeurs.
 
-**Remarque** : Le code est minimaliste, on ne demande pas de vérifier si les paramètres `first_index` et `last_index` désignent des index valides vecteur.
+**Remarque** : Le code est minimaliste, on ne demande pas de vérifier si les paramètres `first_index` et `last_index` désignent des index valides du vecteur.
 
 ### Question 1.3
 
-Y-aurait-il besoin de compléter la liste des constructeurs. Expliquer pourquoi c'est nécessaire ou ce n'est pas nécessaire.
+Y aurait-il besoin de compléter la liste des constructeurs. Expliquer pourquoi c'est nécessaire ou ce n'est pas nécessaire.
 
 Si vous ajoutez un ou plusieurs constructeurs, écrivez le constructeur et son code.
 
@@ -51,17 +51,17 @@ Si vous ajoutez un ou plusieurs constructeurs, écrivez le constructeur et son c
 
 ### Question 2.1
 
-Est-il possible d'accéder aux champs `m_container`, `m_first_index` et `m_last_index`. Expliquer pourquoi ?
+Est-il possible d'accéder aux champs `m_container`, `m_first_index` et `m_last_index` en dehors de la classe `view` ? Expliquer pourquoi ?
 
 ### Question 2.2
 
-Proposer un moyen pour pouvoir accéder en lecture aux données stockées dans ces champs mais surtout pas en écriture.
+Proposer un moyen pour pouvoir accéder en lecture aux données stockées dans ces champs, mais surtout pas en écriture.
 
-**Conseils** : Penser aux méthodes d'accés.
+**Conseils** : Penser aux méthodes d'accès.
 
 ## 3. Opérateurs de comparaison
 
-Nous souhaitons définir un opérateur qui détermine si deux object **view** désigne la même séquence d'un même vecteur d'entiers.
+Nous souhaitons définir un opérateur qui détermine si deux objets **view** désignent la même séquence d'un même vecteur d'entiers.
 
 ### Question 3.1
 
@@ -81,7 +81,7 @@ public:
 
 ## 4. Containeur
 
-Nous souhaitons que la classe `std::vector<int>` soit un containeur. Nous rappellons rapidement les types et comportements que doit définir un containeur :
+Nous souhaitons que la classe `view` soit un containeur. Nous rappelons rapidement les types et comportements que doit définir un containeur :
 
 | Type | Description |
 |------|-------------|
@@ -101,11 +101,11 @@ Nous souhaitons que la classe `std::vector<int>` soit un containeur. Nous rappel
 
 ### Question 4.1
 
-Nous souhaitons simplifier l'écriture et ne pas avoir à systématiquement recopier notre containeur d'origine qui est `std::vector<int>`, surtout que nous allons prochainement généraliser la classe à d'autres containeurs. Pour ce faire, Nous souhaitons que la classe `view` expose un alias de type public qui se dénome : `container`. Définissez ce type dans la classe `view` afin qu'il désigne le type `std::vector<int>`.
+Nous souhaitons simplifier l'écriture et ne pas avoir à systématiquement recopier notre containeur d'origine qui est `std::vector<int>`, surtout que nous allons prochainement généraliser la classe à d'autres containeurs. Pour ce faire, nous souhaitons que la classe `view` expose un alias de type public qui se dénomme : `container`. Définissez ce type dans la classe `view` afin qu'il désigne le type `std::vector<int>`.
 
 Remplacer ensuite toutes les références à `std::vector<int>` par une référence à l'alias de type `container`.
 
-**Rappel**: Pour définir un alias de type dans une classe, par exemple dans une classe `number` un type `float_type` qui est égal à `double` comme suit:
+**Rappel**: Pour définir un alias de type dans une classe, par exemple dans une classe `number` un type `float_type` qui est égal à `double` comme suit :
 
 ```cpp
 class number:
@@ -144,15 +144,15 @@ Introduisez l'ensemble des types nécessaires en n'hésitant pas à faire réfé
 
 Maintenant que les alias de types sont définis nous pouvons générer les méthodes que doit implanter un containeur tel que définit précédemment. Commencer par définir les méthodes `empty()` et `size()`.
 
-Ensuite proposer une écriture des méthodes `begin()` et `end()`. (Ne pas oublier que le containeur peut-être accessile en lecture ou en lecture et en écriture.)
+Ensuite proposer une écriture des méthodes `begin()` et `end()`. (Ne pas oublier que le containeur peut-être accessible en lecture ou en lecture et en écriture.)
 
 ## 5. Patrons
 
-La classe `view` est définie pour un containeur de type `std::vector<int>`. Cependant, cette classe peut aussi fonctionner avec un  containeur de type `std::vector<float>` ou même un `std::array<std::string>`.
+La classe `view` est définie pour un containeur de type `std::vector<int>`. Cependant, cette classe peut aussi fonctionner avec un containeur de type `std::vector<float>` ou même un `std::array<std::string>`.
 
 ### Question 5.1
 
-Transformer la classe `view` en la paramètrant par le type du containeur qui stocke les éléments qui sont accéder par la classe `view`.
+Transformer la classe `view` en la paramétrant par le type du containeur qui stocke les éléments qui sont accédés par la classe `view`.
 
 Pour rappel, le squelette de la classe est le suivant :
 
@@ -186,7 +186,7 @@ Dites parmi les définitions suivantes :
 * Celles qui sont correctes,
 * Celles qui ne compilent pas.
 
-| Instantiation | Compile |
+| Instanciation | Compile |
 |-------|-------|
 `view<std::vector<int>>`||
 `view<std::array<int>>`||
@@ -196,7 +196,7 @@ Dites parmi les définitions suivantes :
 
 ### Question 5.3
 
-Nous souhaitons définir en C++20 des contraintes sur le type containeur. Définisser la liste des types ainsi que la liste des fonctions que le containeur doit exposer que l'instantiation se déroule correctement.
+Nous souhaitons définir en C++20 des contraintes sur le type containeur. Définissez la liste des types ainsi que la liste des fonctions que le containeur doit exposer pour que l'instanciation se déroule correctement.
 
 Définissez à partir de cela un `concept` dénommé `view_container` qui s'assure que les fonctions sont bien présentes.
 
@@ -238,11 +238,11 @@ ne génère aucune erreur si jamais `first_index` est inférieur à zéro ou plu
 
 ### Question 6.1
 
-Modifier le constructeur pour qu'il vérifie que les indices `first_index` et `last_index`sont valides et si ce n'est le cas, génère une exception de type `std::out_of_range`.
+Modifier le constructeur pour qu'il vérifie que les indices `first_index` et `last_index` sont valides et si ce n'est le cas, génère une exception de type `std::out_of_range`.
 
 ## 7. Opérateur d'indexation
 
-L'opérateur d'indexation est défini dans une classe comme:
+L'opérateur d'indexation est défini dans une classe comme :
 
 ```cpp
 template<typename T>

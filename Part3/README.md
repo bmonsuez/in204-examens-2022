@@ -1,6 +1,6 @@
 ## 3. Opérateurs de comparaison [Correction]
 
-Nous souhaitons définir un opérateur qui détermine si deux object **view** désigne la même séquence d'un même vecteur d'entiers.
+Nous souhaitons définir un opérateur qui détermine si deux objets **view** désignent la même séquence d'un même vecteur d'entiers.
 
 ### Question 3.1
 
@@ -25,7 +25,7 @@ ___
 Deux vues sont égales si et seulement si :
 
 * elles font références au même vecteur, ie. l'adresse des deux vecteurs doivent être égaux.
-* le premier et le dernier index définissant la vue sont égaux.
+* les premiers et les derniers index définissant la vue sont égaux.
 
 En conséquence de quoi, il est possible de réécrire l'opérateur égal comme suit :
 
@@ -49,6 +49,6 @@ Pour les versions antérieures à C++20, il est nécessaire de définir l'opéra
     }
 ```
 
-A partir de C++20, si l'opérateur `operator ==` est redéfini, alors le compilateur génère automatiquement l'opérateur `operator !=` en faisant la négation de l'opérateur `operator ==`.
+À partir de C++20, si l'opérateur `operator ==` est redéfini, alors le compilateur génère automatiquement l'opérateur `operator !=` en faisant la négation de l'opérateur `operator ==`.
 
 ___

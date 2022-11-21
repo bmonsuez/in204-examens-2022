@@ -1,6 +1,6 @@
 ## 4. Containeur
 
-Nous souhaitons que la classe `std::vector<int>` soit un containeur. Nous rappellons rapidement les types et comportements que doit définir un containeur :
+Nous souhaitons que la classe `view` soit un containeur. Nous rappellons rapidement les types et comportements que doit définir un containeur :
 
 | Type | Description |
 |------|-------------|
@@ -20,7 +20,7 @@ Nous souhaitons que la classe `std::vector<int>` soit un containeur. Nous rappel
 
 ### Question 4.1
 
-Nous souhaitons simplifier l'écriture et ne pas avoir à systématiquement recopier notre containeur d'origine qui est `std::vector<int>`, surtout que nous allons prochainement généraliser la classe à d'autres containeurs. Pour ce faire, Nous souhaitons que la classe `view` expose un alias de type public qui se dénome : `container`. Définissez ce type dans la classe `view` afin qu'il désigne le type `std::vector<int>`. 
+Nous souhaitons simplifier l'écriture et ne pas avoir à systématiquement recopier notre containeur d'origine qui est `std::vector<int>`, surtout que nous allons prochainement généraliser la classe à d'autres containeurs. Pour ce faire, nous souhaitons que la classe `view` expose un alias de type public qui se dénomme : `container`. Définissez ce type dans la classe `view` afin qu'il désigne le type `std::vector<int>`. 
 
 Remplacer ensuite toutes les références à `std::vector<int>` par une référence à l'alias de type `container`.
 
@@ -36,7 +36,7 @@ public:
 };
 ```
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -52,7 +52,7 @@ private:
 };
 ```
 
-et ensuite de remplacer toutes les occurences de `std::vector<int>` dans la classe `view` par l'alias de type `container`, ce qui nous donne le code suivant :
+et ensuite de remplacer toutes les occurrences de `std::vector<int>` dans la classe `view` par l'alias de type `container`, ce qui nous donne le code suivant :
 
 ```cpp
 class view
@@ -90,7 +90,7 @@ public:
 };
 ```
 
-</div>
+___
 
 ### Question 4.2
 
@@ -115,7 +115,7 @@ public:
 
 Introduisez l'ensemble des types nécessaires en n'hésitant pas à faire référence aux types présents dans le `std::vector<int>`. Utilisez l'alias `container` en lieu et place de `std::vector<int>`, en effet cela évitera d'avoir à réécrire le code quand on généralisera le type à d'autres containeurs.
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
@@ -143,20 +143,19 @@ public:
     ...
 };
 ```
-
-</div>
+___
 
 ### Question 4.3
 
 Maintenant que les alias de types sont définis nous pouvons générer les méthodes que doit implanter un containeur tel que définit précédemment. Commencer par définir les méthodes `empty()` et `size()`.
 
-Ensuite proposer une écriture des méthodes `begin()` et `end()`. (Ne pas oublier que le containeur peut-être accessile en lecture ou en lecture et en écriture.)
+Ensuite proposer une écriture des méthodes `begin()` et `end()`. (Ne pas oublier que le containeur peut-être accessible en lecture ou en lecture et en écriture.)
 
-<div style="background-color:#cdd">
+___
 
 **Correction**:
 
-Nous débutons par les méthodes `empty()` et `size()` qui sont les plus simples. Le nombre d'éléments dans la vue `[first_index , last_index]` est égal à `last_index - first_index + 1`. Nous constatons que si la vue est vide, `last_index == first_index - 1`. Ce qui nous définit la condition pour teste si la vue contient des éléments ou aucun élément.
+Nous débutons par les méthodes `empty()` et `size()` qui sont les plus simples. Le nombre d'éléments dans la vue `[first_index , last_index]` est égal à `last_index - first_index + 1`. Nous constatons que si la vue est vide, `last_index == first_index - 1`. Ce qui nous définit la condition pour tester si la vue contient des éléments ou aucun élément.
 
 ```cpp
 class view
@@ -195,7 +194,7 @@ public:
 };
 ```
 
-Pour la méthode `end`, celle-ci doit retourner l'itérateur marquant la fin de la séquence, c'est à dire l'itérateur qui est obtenu après l'itérateur référençant le dernier élément de la vue. L'itérateur référençant le dernier élément de la vue est l'itérateur de début renvoyé par le containeur `m_container` augmenté de l'indice `last_index`. L'itérateur suivant est celui obtenu en incrémentant une fois de plus le précédent itérateur.
+Pour la méthode `end`, celle-ci doit retourner l'itérateur marquant la fin de la séquence, c'est-à-dire l'itérateur qui est obtenu après l'itérateur référençant le dernier élément de la vue. L'itérateur référençant le dernier élément de la vue est l'itérateur de début renvoyé par le containeur `m_container` augmenté de l'indice `last_index`. L'itérateur suivant est celui obtenu en incrémentant une fois de plus le précédent itérateur.
 
 ```cpp
 class view
@@ -208,11 +207,11 @@ public:
 };
 ```
 
-</div>
+___
 
 ### Compléments
 
-En fait, les types et méthodes que nous avons défini ne forment qu'un sous-ensemble des méthodes et types que doivent fournir un containeur. La liste complète des méthodes et types que doit définir un containeur est défini sur la page [C++ named requirements: Container](https://en.cppreference.com/w/cpp/named_req/Container).
+En fait, les types et méthodes que nous avons définis ne forment qu'un sous-ensemble des méthodes et types que doivent fournir un containeur. La liste complète des méthodes et types que doit définir un containeur est défini sur la page [C++ named requirements: Container](https://en.cppreference.com/w/cpp/named_req/Container).
 
 Nous constatons qu'il manque la définition du type `difference_type`, les fonctions `a.swap(b)`, `swap(a, b)`et enfin `a.max_size()`. L'implantation de ces types et méthodes ne posent pas de problèmes :
 

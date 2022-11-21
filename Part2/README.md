@@ -1,9 +1,8 @@
 ## 2: Les données stockées au sein de la classe [Correction]
 
-
 ### Question 2.1
 
-Est-il possible d'accéder aux champs `m_container`, `m_first_index` et `m_last_index`. Expliquer pourquoi ?
+Est-il possible d'accéder aux champs `m_container`, `m_first_index` et `m_last_index` en dehors de la classe `view` ? Expliquer pourquoi ?
 
 ___
 
@@ -28,9 +27,9 @@ ___
 
 ### Question 2.2
 
-Proposer un moyen pour pouvoir accéder en lecture aux données stockés dans ces champs mais surtout pas en écriture.
+Proposer un moyen pour pouvoir accéder en lecture aux données stockées dans ces champs, mais surtout ne pas y accéder en écriture.
 
-**Conseils** : Penser aux méthodes d'accés.
+**Conseils** : Penser aux méthodes d'accès.
 
 ___
 
@@ -42,7 +41,7 @@ Il est habituel de définir des méthodes d'accès qui renvoie la valeur du cham
 
 Ces méthodes sont bien entendues publiques (ou éventuellement protégées si nous ne souhaitons rendre ces champs visibles qu'aux classes héritant de la classe courante).
 
-Par exemple, nous considérons vouloir accèder à un champ `name` defini dans une classe `named_object` en définissant des méthodes préfixées par `get`  et `set`.
+Par exemple, nous considérons vouloir accéder à un champ `name` defini dans une classe `named_object` en définissant des méthodes préfixées par `get`  et `set`.
 
 ```cpp
 class named_object
@@ -58,7 +57,7 @@ public:
 
 Il est possible de n'avoir qu'un accès en lecture (en ne définissant par la méthode préfixée par `set`) ou en écriture en ne définissant pas la méthode préfixée par `get`).
 
-Si nous souhaitons accèder au champ `name` par une méthode dénommée `name` offrant un accès en lecture et en écriture, nous pouvons écrire ceci comme suit :
+Si nous souhaitons accéder au champ `name` par une méthode dénommée `name` offrant un accès en lecture et en écriture, nous pouvons écrire ceci comme suit :
 
 ```cpp
 class named_object
@@ -72,7 +71,7 @@ public:
 };
 ```
 
-Dans ce cas nous définissons deux méthodes `name`, l'une étant constante `name() const`, l'autre n'étant pas constante `name()`. La première méthode retourne une copie du nome stockée dans l'objet. Le contenu du champ n'est pas modifiable. La seconde méthode retourne une référence sur le champ `m_name`, il est donc possible d'accèder au contenu du champ. Il est dés lors possible d'écrire le code suivant :
+Dans ce cas nous définissons deux méthodes `name`, l'une étant constante `name() const`, l'autre n'étant pas constante `name()`. La première méthode retourne une copie du nome stockée dans l'objet. Le contenu du champ n'est pas modifiable. La seconde méthode retourne une référence sur le champ `m_name`, il est donc possible d'accèder au contenu du champ. Il est dès lors possible d'écrire le code suivant :
 
 ```cpp
 int main()

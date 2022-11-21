@@ -4,7 +4,7 @@ La classe `view` est définie pour un containeur de type `std::vector<int>`. Cep
 
 ### Question 5.1
 
-Transformer la classe `view` en la paramètrant par le type du containeur qui stocke les éléments qui sont accéder par la classe `view`.
+Transformer la classe `view` en la paramétrant par le type du containeur qui stocke les éléments qui sont accédés par la classe `view`.
 
 Pour rappel, le squelette de la classe est le suivant :
 

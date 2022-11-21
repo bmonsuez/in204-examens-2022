@@ -1,6 +1,6 @@
 ## 6. Exceptions
 
-Le constructuer de la classe `view`:
+Le constructeur de la classe `view`:
 
 ```cpp
     view(container& container, int first_index, int second_index) ```
@@ -36,7 +36,7 @@ Ceci permet d'avoir le code suivant :
     }
 ```
 
-Dans le code proposé en correction, il est proposé d'utilisé la fonction `std::format`qui est désormais supporté par certains compilateurs qui offre une alternative à `printf` de C tout en n'en ayant pas les défauts. Ceci donne le code suivant:
+Dans le code proposé en correction, il est proposé d'utiliser la fonction `std::format`qui est désormais supporté par certains compilateurs qui offre une alternative à `printf` de C tout en n'en ayant pas les défauts. Ceci donne le code suivant :
 
 ```cpp
     view(container& container, 
