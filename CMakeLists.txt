@@ -9,3 +9,5 @@ add_subdirectory(Part5)
 add_subdirectory(Part6)
 add_subdirectory(Part7)
 
+add_subdirectory(Annexes)
+

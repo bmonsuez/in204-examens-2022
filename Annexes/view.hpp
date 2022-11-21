@@ -1,6 +1,7 @@
 #pragma once
 
 #include<algorithm>
+#include<compare>
 #include<exception>
 #include<format>
 
@@ -75,7 +76,6 @@ public:
                 m_first_index, m_last_index));
     }
 
-
     view(const view<containerT>&) = default; 
 
     // Access methods
@@ -109,6 +109,29 @@ public:
     }
 #endif
 
+    // Spaceship operator
+    std::partial_ordering operator <=> (const view<containerT>& another_view) const
+    {
+        if(m_container != another_view.m_container)
+            return std::partial_ordering::unordered;
+        if(m_first_index < another_view.m_first_index)
+        {
+            return m_last_index >= another_view.m_last_index ? 
+                std::partial_ordering::greater:
+                std::partial_ordering::unordered;
+        }
+        if(m_first_index == another_view.m_first_index)
+        {
+            return m_last_index == another_view.m_last_index ? 
+                std::partial_ordering::equivalent:
+                m_last_index > another_view.m_last_index ? 
+                    std::partial_ordering::greater :
+                    std::partial_ordering::less;
+        }
+        return m_last_index <= another_view.m_last_index ? 
+            std::partial_ordering::less:
+            std::partial_ordering::unordered;
+    }
 
     reference operator[](int index) 
     { 
@@ -149,3 +172,59 @@ namespace std
         first_view.swap(second_view);
     }
 }
+
+// function 'create_view'
+
+template<class containerT>
+view<containerT> create_view(containerT& container)
+{
+    return view<containerT>(container);
+}
+
+template<class containerT>
+view<containerT> create_view(containerT& container, int first_index)
+{
+    return view<containerT>(container, first_index, container.size() - first_index);
+}
+
+template<class containerT>
+view<containerT> create_view(containerT& container, int first_index, int last_index)
+{
+    return view<containerT>(container, first_index, last_index);
+}
+
+// function 'create_view' for views. Avoid to make reference to views.
+
+template<class containerT>
+view<containerT> create_view(view<containerT>& base_view)
+{
+    return view<containerT>(
+        view.get_container(), base_view.get_first_index(), view.get_last_index());
+}
+
+template<class containerT>
+view<containerT> create_view(view<containerT>& base_view, int first_index)
+{
+    if(first_index > base_view.size())
+        throw std::out_of_range(std::format("first_index expected in range [0..{}]. Got: {}",
+        base_view.size(), first_index));
+    return view<containerT>(
+        base_view.get_container(), 
+        first_index + base_view.get_first_index(), 
+        base_view.get_last_index());
+}
+
+template<class containerT>
+view<containerT> create_view(view<containerT>& base_view, int first_index, int last_index)
+{
+    if(first_index > base_view.size())
+        throw std::out_of_range(std::format("first_index expected in range [0..{}]. Got: {}",
+        base_view.size(), first_index));
+    if(last_index > base_view.size())
+        throw std::out_of_range(std::format("last_index expected in range [0..{}]. Got: {}",
+        base_view.size(), last_index));
+    auto base_index = base_view.get_first_index();
+    return view<containerT>(base_view.get_container(), 
+        first_index + base_index, last_index + base_index);
+}
+

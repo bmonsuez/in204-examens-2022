@@ -59,7 +59,7 @@ public:
         m_first_index(first_index),
         m_last_index(last_index)
     {}
-    view(const view&) = default; 
+    view(const view<containerT>&) = default; 
 
     // Access methods
     int get_first_index() const { return m_first_index; }
@@ -77,20 +77,21 @@ public:
     const_iterator end() const { return m_container.begin() + m_last_index + 1; }
 
     // Comparison operators
-    bool operator == (const view& another_view) const
+    bool operator == (const view<containerT>& another_view) const
     {
         return &m_container == &another_view.m_container 
             && m_first_index == another_view.m_first_index
             && m_last_index == another_view.m_last_index;
     }
 #if __cplusplus < 202002L
-    bool operator != (const view& another_view) const
+    bool operator != (const view<containerT>& another_view) const
     {
         return &m_container != &another_view.m_container 
             || m_first_index != another_view.m_first_index
             || m_last_index != another_view.m_last_index;
     }
 #endif
+
 
     // Additional methods (as exposed in the complementary section of part 4)
     const_iterator cbegin() const { return m_container.begin() + m_first_index; }

@@ -10,7 +10,7 @@ Chaque sous-répertoire contient une correction détaillée ainsi que le code co
 
 [Sujet de l'examen](Sujet/README.md)
 
-### Correction
+### Corrections
 
 [Partie 1: Définition d'une classe **view** pour un vecteur d'entier](Part1/README.md)
 
@@ -25,3 +25,11 @@ Chaque sous-répertoire contient une correction détaillée ainsi que le code co
 [Partie 6: Exceptions](Part6/README.md)
 
 [Partie 7: Opérateur d'indexation](Part7/README.md)
+
+### Annexes
+
+[Annexe A: L'intérêt d'utiliser une fonction **factory** `create_view` ?](Annexes/create_view.md)
+
+[Annexe B: Créer des sous-vues de manière efficace](Annexes/view_of_view.md)
+
+[Annexe C: Définir des opérations de comparaisons](Annexes/spaceship.md)
