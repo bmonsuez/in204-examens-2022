@@ -2,7 +2,13 @@
 
 #include<algorithm>
 #include<exception>
+
+#if (defined(__GNUC__) && (__GNUC__ < 13)) || (defined(_clang_) && (_clang_ < 15)) || (defined(_MSC_VER) && (_MSC_VER < 	1932))
+    #define _STD_FORMAT_NOT_SUPPORTED
+#include"../common/format.hpp"
+#else
 #include<format>
+#endif
 
 template<typename T>
 concept view_container = requires(T& c, const T& cc) 
