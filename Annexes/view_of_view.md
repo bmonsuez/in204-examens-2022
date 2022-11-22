@@ -38,7 +38,7 @@ view<containerT> create_view(containerT& container, int first_index, int last_in
 
 ```cpp
 template<class containerT>
-view<containerT> create_view(base_view<containerT>& view, 
+view<containerT> create_view(view<containerT>& base_view, 
     int first_index, int last_index)
 {
     auto base_index = base_view.get_first_index();
