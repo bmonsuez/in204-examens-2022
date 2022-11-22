@@ -147,9 +147,10 @@ concept view_container = requires
     typename T::const_reference;
     typename T::iterator;
     typename T::const_iterator;
+    typename T::sisze_type;
 
-    std::random_access_iterator<T::iterator>;
-    std::random_access_iterator<T::const_iterator>;
+    requires std::random_access_iterator<typename T::iterator>;
+    requires std::random_access_iterator<typename T::const_iterator>;
 };
 ```
 
